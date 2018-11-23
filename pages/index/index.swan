@@ -1,0 +1,95 @@
+<scroll-view scroll-y="true" style='height:100vh' scroll-into-view="{{toView}}" bind:scrolltoupper="upper" bind:scrolltolower="lower" scroll-top="0" bind:scroll="scroll" scroll-with-animation='true'>
+    <view class="container_warp">
+        <view class="banner">
+            <image src="https://m.youjuke.com/images/tg/zxbj/banner2.jpg" mode="widthFix" class="banner-img"></image>
+        </view>
+        <!-- 报名 -->
+        <view class="bm" id="{{wordindex}}">
+            <!-- 数字跳动 -->
+            <view class="yusuan"><text>您家的装修预算</text></view>
+            <view class="num-frame">
+                <view class="yuan"><text>元</text></view>
+                <view class="num-window clearfix">
+                    {{randNum}}
+                </view>
+            </view>
+            <view class="result-queson clearfix">
+                <view class="result-li">
+                    <text>客厅预算：？元</text>
+                    <text>卧室预算：？元</text>
+                </view>
+                <view class="result-li">
+                    <text>厨卫预算：？元</text>
+                    <text>餐厅预算：？元</text>
+                </view>
+            </view>
+            <!-- 报名框 -->
+            <view class="bm_container">
+                <form bindsubmit="formSubmit" bindreset="formReset" report-submit>
+                    <view class="row-bm-item">
+                        <picker bindchange="bindCasPickerChange" value="{{casArray[casIndex].id}}" range-key="{{'name'}}" range="{{casArray}}" name="region" class='region'>
+                            <view class="picker" style='font-size:30rpx;'>
+                                {{casArray[casIndex].name}}
+                            </view>
+                        </picker>
+                    </view>
+                    <view class="row-bm-item">
+                        <input class="input_area" value='{{area}}' name="area" placeholder-class="placeholder" placeholder="请输入您的房屋面积" bindinput="areaInput" type='number' />
+                        <text>㎡</text>
+                    </view>
+                    <view class="row-bm-item">
+                        <picker mode="multiSelector" name="housetype" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'name'}}" class='select' id="pick_text">
+                            <view class="picker">
+                                {{multiArray[0][multiIndex[0]].name}} {{multiArray[1][multiIndex[1]].name}} {{multiArray[2][multiIndex[2]].name}} {{multiArray[3][multiIndex[3]].name}} {{multiArray[4][multiIndex[4]].name}}
+                            </view>
+                        </picker>
+                    </view>
+                    <view class="row-bm-item">
+                        <input class='name' value='{{name}}' name="name" placeholder-class="placeholder" placeholder="请输入您的姓名" bindinput="nameInput" type='text' />
+                    </view>
+                    <view class="row-bm-item">
+                        <input class='mobile' value='{{mobile}}' name="mobile" placeholder-class="placeholder" placeholder="输入号码，报价结果将发送到您的手机" bindinput="mobileInput" type='number' maxlength='11' />
+                    </view>
+                    <view class="row-bm-item">
+                        <button class="subBtn" formType="submit">立即获取报价</button>
+                    </view>
+                </form>
+            </view>
+        </view>
+        <!-- 为什么我们的报价很靠谱 -->
+        <view class="whynot">
+            <image src="https://m.youjuke.com/images/tg/zxbj/nr_02.jpg" mode="widthFix" class="banner-img" alt="为什么我们的报价很靠谱"></image>
+        </view>
+        <view class="back" bindtap="scrollView" data-wordindex="{{wordindex}}">立即获取报价</view>
+        <!-- 底部公司版权信息 -->
+        <view class="copy_footer">
+            <view style="display: block;text-align: center; padding: .25rem 0; font-size: 12px;color: #a6a6a6;background-color: #fff;">
+                <p>Copyright ©2013-2018 上海欢居信息技术有限公司</p>
+                <a target="_blank" rel="external nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010702001840" style="background: #fff;">
+                <p style="display:inline-block;margin: 2px 0px 2px 5px; color:#a6a6a6;font-size: 12px;">沪公网安备 31010702001840号 沪ICP备13001780号-5</p>
+                </a>
+                <p>
+                <a title="联系我们" href="/about.html" style="display: inline-block;padding: 0rem 3px;color: #a6a6a6;">联系我们</a>
+                <a title="公司简介" href="/profile.html" style="display: inline-block;padding: 0rem 3px;color: #a6a6a6;">公司简介</a> 客服热线：400-920-6688</p>
+            </view>
+        </view>
+    </view>    
+</scroll-view>  
+<!-- 底部右侧跟随 -->
+<!-- <block s-if="showview">
+    <view class="gensui hide">
+        <image src="https://m.youjuke.com/images/tg/zxbj/online_03.png" mode="widthFix" data-tel="400-689-1618" bindtap="CallPhone"></image>
+    </view>
+</block>
+<block s-else>
+    <view class="gensui show">
+        <image src="{{showview ? '/images/1.jpg' : 'https://m.youjuke.com/images/tg/zxbj/online_03.png'}}" mode="widthFix" data-tel="400-689-1618" bindtap="CallPhone"></image>
+        
+        <image src="https://m.youjuke.com/images/tg/zxbj/online_03.png" mode="widthFix" data-tel="400-689-1618" bindtap="CallPhone"></image>
+    </view>
+</block> -->
+<block>
+    <view class="gensui">
+        <image src="{{showview ? '/images/1.jpg' : 'https://m.youjuke.com/images/tg/zxbj/online_03.png'}}" class="follow-img" mode="widthFix" data-tel="400-689-1618" bindtap="CallPhone"></image>
+    </view>
+</block>

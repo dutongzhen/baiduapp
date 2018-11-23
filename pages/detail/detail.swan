@@ -1,0 +1,4 @@
+<view class="container">
+    <!--to do-->
+    <web-view class="web-view" src="https://m.youjuke.com/tg/lffxjg.html?area={{area}}&baoming_id={{baoming_id}}&house_info={{house_info}}"></web-view>
+</view>
